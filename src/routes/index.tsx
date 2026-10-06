@@ -1,17 +1,18 @@
 import { createFileRoute } from "@tanstack/react-router";
 
-const proxy = async ({ request }: { request: Request }) => {
-  const { proxyRequest } = await import("@/lib/proxy.server");
-  return proxyRequest(request);
-};
-
 export const Route = createFileRoute("/")({
-  server: {
-    handlers: {
-      GET: proxy,
-      POST: proxy,
-      HEAD: proxy,
-      OPTIONS: proxy,
-    },
-  },
+  component: HomePage,
 });
+
+function HomePage() {
+  return (
+    <div className="flex min-h-screen flex-col items-center justify-center bg-background p-4 text-center">
+      <h1 className="text-3xl font-bold tracking-tight text-foreground">
+        Welcome to PW-MARCO
+      </h1>
+      <p className="mt-2 text-muted-foreground">
+        Platform successfully unlocked and ready.
+      </p>
+    </div>
+  );
+}
